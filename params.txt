@@ -1,0 +1,15 @@
+C-Ions 0 -1.0 +1.0 -18.015 -17.013
+N-Ions 0 -1.0 +1.0 -18.015 -17.013 -28.01 -45.023 -46.025
+C-Probabilities 35 35 35 35 35 
+N-Probabilities 35 35 35 35 35 35 35 35
+C-Intensities 1.75 1 1 0.25 0.25
+N-Intensities 1.5 1 1 0.75 0.75 0.25 0.25 0.25 
+Immonium-Ions M D Q K E
+Immonium-Probabilities 68 68 68 68 68
+Immonium-Intensities 0.02 0.02 0.02 0.02 0.02
+Max-Charge 2
+Prob-Charge 35
+SNR 2.8
+Noise 2
+Noise-Intensities 0.5 2.25
+Mass-Range 100 10000
