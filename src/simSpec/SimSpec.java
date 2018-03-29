@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import org.omg.CORBA.CTX_RESTRICT_SCOPE;
+
 import simSpec.MyPair;
 
 /**
@@ -53,6 +55,8 @@ public class SimSpec {
     static Double minMass = 800.0;;
     static Double maxMass = 4000.0;
 
+	static float cTermOff=0, nTermOff=0;
+	
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Random r = new Random(System.currentTimeMillis());
         Map<String, Double> aaMasses = new HashMap<>();
@@ -88,7 +92,7 @@ public class SimSpec {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(3);
         df.setGroupingUsed(false);
-		
+        
         Random noiseGen = new Random(System.currentTimeMillis());
 		Random intenGen = new Random(System.currentTimeMillis());
 
@@ -105,12 +109,12 @@ public class SimSpec {
             } else {
                 //String[] myStrArr = myLine.split("\t");
               //  Double peptideMass = Double.parseDouble(myStrArr[3]);
-                double peptideMassN = 18.015;
+                double peptideMassN = 18.015+cTermOff+nTermOff;
                 
-                double bSeries = 1;
+                double bSeries = 1+nTermOff;
                 //double tempB = 0;
                 double ySeries = 0;
-                
+               
                 int subScriptB = 0;
                 int subScriptY = 0;
                 int totBions, totYions, ionsGen;
@@ -135,7 +139,7 @@ public class SimSpec {
                     totBions = 0;
                     ionsGen = 0;
                     ySeries = peptideMassN - bSeries + 2;
-                    
+                    System.out.println(ySeries);
                     // add ammomnium ions
                     for(int i = 0; i < immoniumIonsAA.size(); i++) {
                     	if(getSelection(ImmProbs.get(i), r));
@@ -172,7 +176,7 @@ public class SimSpec {
                         subScriptY = peptideStr.length() - subScriptB;
 
                         bSeries += aaMasses.get(myChar.myStr);
-                        ySeries = peptideMassN - bSeries + 2;
+                        ySeries = peptideMassN - bSeries + 2;// + cTermOff;
 
                         for (int i = 0; i < ionOffsetsN.size(); i++) {
                             Ion tempB = new Ion(bSeries + ionOffsetsN.get(i), ionIntensitiesN.get(i)*intenCon);
@@ -278,13 +282,19 @@ public class SimSpec {
         aaMasses.put("R", 156.188);
         aaMasses.put("Y", 163.06);
         aaMasses.put("W", 186.07);
-        
+        String[] modMass;
         String myLine;
         while((myLine = ptmFile.readLine()) != null){
-            String[] modTok = myLine.split("=");
-            String[] modMass;
+        	String[] modTok = myLine.split("=");
+        	if(modTok[0].equals("cTerm")) {
+        		cTermOff = Float.parseFloat(modTok[1]);
+        	}else if(modTok[0].equals("nTerm")) {
+        		nTermOff = Float.parseFloat(modTok[1]);
+        	}
+        	else {
             modMass = modTok[1].split("\\+");
             aaMasses.put(modTok[0], aaMasses.get(modMass[0])+Double.parseDouble(modMass[1]));
+        	}
         }
     }
 
