@@ -7,7 +7,7 @@
 
 //import com.sun.org.apache.xpath.internal.operations.Equals;
 
-package simSpec;
+//package simSpec;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -24,7 +24,7 @@ import java.util.Random;
 
 import org.omg.CORBA.CTX_RESTRICT_SCOPE;
 
-import simSpec.MyPair;
+//import simSpec.MyPair;
 
 /**
  *
