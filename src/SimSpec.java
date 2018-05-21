@@ -139,7 +139,7 @@ public class SimSpec {
                     totBions = 0;
                     ionsGen = 0;
                     ySeries = peptideMassN - bSeries + 2;
-                    System.out.println(ySeries);
+                   // System.out.println(ySeries);
                     // add ammomnium ions
                     for(int i = 0; i < immoniumIonsAA.size(); i++) {
                     	if(getSelection(ImmProbs.get(i), r));
