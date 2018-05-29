@@ -390,7 +390,7 @@ public class SimSpec {
             while (noiseAdded < totNoisePeaks) {
                 double currentIon = noiseGen.nextGaussian() * noiseStdDev + noiseMean;
 				Double noiseInten = noiseIntenMin + intenGen.nextDouble()*(noiseIntenMax-noiseIntenMin);
-                if (!noiseList.contains(currentIon) && currentIon > 1 && currentIon < peptideMass + 50) {
+                if (!noiseList.contains(currentIon) && currentIon > 1 && currentIon < peptideMass) {
                     noiseList.add(new Ion(currentIon, noiseInten*intenCon));
                     noiseAdded++;
                 }
@@ -401,7 +401,7 @@ public class SimSpec {
                 while (noiseAdded < totNoisePeaks) {
                 double currentIon = noiseGen.nextDouble()*peptideMass;
 				Double noiseInten = noiseIntenMin + intenGen.nextDouble()*(noiseIntenMax-noiseIntenMin);
-                if (!noiseList.contains(currentIon) && currentIon > 1 && currentIon < peptideMass + 50) {
+                if (!noiseList.contains(currentIon) && currentIon > 1 && currentIon < peptideMass) {
                    noiseList.add(new Ion(currentIon, noiseInten*intenCon));
                     noiseAdded++;
                 }
