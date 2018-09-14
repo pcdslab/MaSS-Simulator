@@ -246,9 +246,7 @@ public class SimSpec {
                 }
             }
             
-            if (count > 50000) {
-                break;
-            }
+       
 			bList.clear();
             yList.clear();
             noiseList.clear();
