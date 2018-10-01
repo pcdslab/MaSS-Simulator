@@ -1,0 +1,17 @@
+MaSS-Simulator GUI 1.0
+
+Running the MaSS-Simulator:
+Launch the MaSS-Simulator GUI from MaSS-Simulator.jar file.
+for linux please use "java -jar MaSS-Simulator.jar" command to launch. Please make sure
+the launcher has the required permissions.
+
+Tutorial and Manual:
+A short tutorial on using MaSS-Simulator is provided in tutorial.pdf.
+
+Citing MaSS-Simulator:
+Muaaz G. Awan and Fahad Saeed. "MaSS-Simulator: A Highly 
+Configurable Simulator for Generating MS/MS Datasets for 
+Benchmarking of Proteomics Algorithms." Proteomics (2018): 1800206.
+
+Feedback and further support:
+please contact at fsaeed@fiu.edu for any further support or reporting bugs.
